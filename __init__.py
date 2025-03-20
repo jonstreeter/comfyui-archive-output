@@ -1,15 +1,18 @@
 import os
-import sys
+from .archive_files import archive_files
 
-# Ensure ComfyUI detects this custom node
 NODE_CLASS_MAPPINGS = {}
 NODE_DISPLAY_NAME_MAPPINGS = {}
 
-# Load the archive API
-from .archive_api import register_api
+def comfyui_archive_output_startup():
+    """Registers the archive function in ComfyUI"""
+    print("📂 Archive Output Extension Loaded")
 
-def comfyui_archive_output_startup(app):
-    register_api(app)
-
-# Tell ComfyUI where to find our JavaScript extension
 WEB_DIRECTORY = "./web"
+
+# Expose the archive function so JavaScript can trigger it
+def execute_archive():
+    """Function triggered by JavaScript button"""
+    message = archive_files()
+    print(f"✅ Archive Output: {message}")
+    return message

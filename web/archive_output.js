@@ -1,6 +1,6 @@
 import { app } from "../../scripts/app.js";
 
-// Register the archive function in ComfyUI settings
+// Register the archive function directly in ComfyUI
 app.registerExtension({
     name: "Archive Output Extension",
     settings: [
@@ -10,12 +10,10 @@ app.registerExtension({
             type: "button",
             onClick: async () => {
                 try {
-                    const response = await fetch('/archive-output', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' }
+                    console.log("📂 Archiving output files...");
+                    window.pywebview.api.execute_archive().then((message) => {
+                        alert(message);
                     });
-                    const data = await response.json();
-                    alert(data.message);
                 } catch (error) {
                     alert('Error archiving output files.');
                 }
