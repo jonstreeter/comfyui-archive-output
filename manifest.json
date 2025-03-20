@@ -1,6 +1,6 @@
 {
     "name": "ComfyUI Archive Output",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "Your Name",
     "description": "Adds an 'Archive Output' button to ComfyUI UI settings for organizing output files.",
     "dependencies": [],
