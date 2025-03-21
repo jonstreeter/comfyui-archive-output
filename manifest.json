@@ -1,8 +1,9 @@
 {
     "name": "ComfyUI Archive Output",
-    "version": "1.0.4",
+    "version": "1.0.0",
     "author": "Your Name",
-    "description": "Adds an 'Archive Output' button to ComfyUI UI settings for organizing output files.",
+    "description": "Adds a utility node to archive output images into dated folders.",
     "dependencies": [],
     "install_script": "install.py"
-}
+  }
+

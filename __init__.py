@@ -1,18 +1,37 @@
 import os
 from .archive_files import archive_files
 
-NODE_CLASS_MAPPINGS = {}
-NODE_DISPLAY_NAME_MAPPINGS = {}
+# Optional: Remove old frontend integration
+WEB_DIRECTORY = os.path.join(os.path.dirname(__file__), 'web')
 
-def comfyui_archive_output_startup():
-    """Registers the archive function in ComfyUI"""
-    print("📂 Archive Output Extension Loaded")
+class ArchiveOutputNode:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {}
+        }
 
-WEB_DIRECTORY = "./web"
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("message",)
+    FUNCTION = "archive"
 
-# Expose the archive function so JavaScript can trigger it
-def execute_archive():
-    """Function triggered by JavaScript button"""
-    message = archive_files()
-    print(f"✅ Archive Output: {message}")
-    return message
+    CATEGORY = "Utilities"
+
+    def archive(self):
+        try:
+            message = archive_files()
+            print(f"✅ Archive Output: {message}")
+            return (message,)
+        except Exception as e:
+            error_msg = f"❌ Error: {str(e)}"
+            print(error_msg)
+            return (error_msg,)
+
+# Register this node with ComfyUI
+NODE_CLASS_MAPPINGS = {
+    "ArchiveOutputNode": ArchiveOutputNode
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "ArchiveOutputNode": "Archive Output"
+}
