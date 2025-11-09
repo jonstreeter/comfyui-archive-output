@@ -26,9 +26,11 @@ jobs:
       - name: Publish to registry
         env:
           REGISTRY_ACCESS_TOKEN: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
+          COMFY_TRACKING_OPT_IN: "no"
         run: |
           if [ -z "$REGISTRY_ACCESS_TOKEN" ]; then
             echo "Error: REGISTRY_ACCESS_TOKEN secret is not set"
             exit 1
           fi
-          echo "$REGISTRY_ACCESS_TOKEN" | comfy node publish
+          # Answer tracking prompt and provide API key
+          echo -e "n\n$REGISTRY_ACCESS_TOKEN" | comfy node publish
