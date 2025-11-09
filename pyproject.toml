@@ -1,7 +1,7 @@
 [project]
 name = "archive-output"
 description = "Archive and organize your generated images into date-structured folders, and compress PNG images to JPEG/WebP with full workflow metadata preservation, saving 85-95% disk space."
-version = "1.0.1"
+version = "1.0.2"
 license = {file = "LICENSE"}
 dependencies = [
     "piexif>=1.1.3",
