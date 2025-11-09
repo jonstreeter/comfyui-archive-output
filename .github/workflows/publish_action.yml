@@ -1,0 +1,34 @@
+name: Publish to Comfy Registry
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pyproject.toml'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install comfy-cli
+        run: pip install comfy-cli
+
+      - name: Publish to registry
+        env:
+          REGISTRY_ACCESS_TOKEN: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$REGISTRY_ACCESS_TOKEN" ]; then
+            echo "Error: REGISTRY_ACCESS_TOKEN secret is not set"
+            exit 1
+          fi
+          echo "$REGISTRY_ACCESS_TOKEN" | comfy node publish
