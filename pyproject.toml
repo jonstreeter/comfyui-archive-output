@@ -1,0 +1,18 @@
+[project]
+name = "archive-output"
+description = "Archive and organize your generated images into date-structured folders, and compress PNG images to JPEG/WebP with full workflow metadata preservation, saving 85-95% disk space."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = [
+    "piexif>=1.1.3",
+    "Pillow>=9.0.0"
+]
+
+[project.urls]
+Repository = "https://github.com/jonstreeter/comfyui-archive-output"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "jonstreeter"
+DisplayName = "Archive Output"
+Icon = ""
