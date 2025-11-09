@@ -1,6 +1,6 @@
 # ComfyUI Archive Output
 
-A comprehensive ComfyUI custom node for organizing and optimizing your generated images. Archive output files into date-structured folders and compress PNG images to JPEG/WebP with full workflow metadata preservation, saving 85-95% disk space.
+A comprehensive ComfyUI custom node for organizing and optimizing your generated images. Archive output files into date-structured folders and convert PNG images to JPEG/WebP with full workflow metadata preservation, saving 85-95% disk space.
 
 ## Features
 
@@ -15,13 +15,15 @@ A comprehensive ComfyUI custom node for organizing and optimizing your generated
 - **Backward Compatible**: Also includes a workflow node for automation
 
 ### Image Compression (NEW!)
-- **PNG to JPEG/WebP compression**: Reduce file sizes by 85-95% while preserving quality
+- **PNG to JPEG/WebP conversion**: Reduce file sizes by 85-95% while preserving quality
 - **Workflow metadata preservation**: Maintains ComfyUI workflow data in EXIF tags
 - **Drag-and-drop restore**: Load workflows from compressed images ⚠️ **Requires [ComfyUI-Image-Saver](https://github.com/alexopus/ComfyUI-Image-Saver) extension**
 - **Configurable quality**: Adjust compression quality (70-100%, default 90%)
-- **Format options**: Choose between JPEG (widely supported) or WebP (better compression)
+- **Format options**:
+  - **JPEG**: Lossy compression, widely supported, good for final outputs
+  - **WebP**: Lossy compression with better quality/size ratio, supports lossless mode
 - **Safe operation**: Option to keep original files until you verify quality
-- **Batch processing**: Compress all PNG files in your output directory at once
+- **Batch processing**: Convert all PNG files in your output directory at once
 - **Smart fallback**: Handles large workflows with automatic fallback strategy
 
 ## Installation
@@ -39,10 +41,8 @@ A comprehensive ComfyUI custom node for organizing and optimizing your generated
 
 2. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/comfyui-archive-output.git
+   git clone https://github.com/jonstreeter/comfyui-archive-output.git
    ```
-
-   (Replace `YOUR_USERNAME` with your GitHub username)
 
 3. Install dependencies:
    ```bash
@@ -81,9 +81,9 @@ Without this extension, compressed images will still be viewable but won't resto
    - A progress dialog will appear
    - When complete, you'll see a summary of files moved, skipped, and any errors
 
-### Using Image Compression
+### Using Image Conversion
 
-The compression feature allows you to reduce disk space usage by converting PNG files to JPEG or WebP format while preserving ComfyUI workflow metadata.
+The image conversion feature allows you to reduce disk space usage by converting PNG files to JPEG or WebP format while preserving ComfyUI workflow metadata.
 
 1. **Open Settings**: Click the gear/settings icon in ComfyUI
 
@@ -100,8 +100,8 @@ The compression feature allows you to reduce disk space usage by converting PNG 
      - 95%: Higher quality, slightly larger files
      - 85%: More aggressive compression, smaller files
    - **Output Format**: Choose WebP or JPEG
-     - **WebP (Recommended/Default)**: Better compression, full metadata support, no size limits
-     - JPEG: More widely compatible, but EXIF metadata limited to 65KB
+     - **WebP (Recommended/Default)**: Better compression ratio, full metadata support, no size limits, supports lossless mode
+     - JPEG: Lossy compression, more widely compatible, but EXIF metadata limited to 65KB
    - **Delete Original PNG**: ⚠️ Warning - This is irreversible!
      - Keep disabled until you verify compressed images meet your needs
 
@@ -253,4 +253,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Support
 
-For issues, questions, or feature requests, please visit the [GitHub Issues page](https://github.com/YOUR_USERNAME/comfyui-archive-output/issues).
+For issues, questions, or feature requests, please visit the [GitHub Issues page](https://github.com/jonstreeter/comfyui-archive-output/issues).
