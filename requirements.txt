@@ -1,2 +1,3 @@
-# No external dependencies required
-# This node uses only Python standard library modules
+# Dependencies for ComfyUI Archive Output with Compression
+piexif>=1.1.3  # For EXIF metadata embedding (JPEG workflow preservation)
+Pillow>=9.0.0  # For image processing (usually included with ComfyUI)

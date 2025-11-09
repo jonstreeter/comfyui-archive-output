@@ -23,3 +23,25 @@ Thumbs.db
 
 # ComfyUI specific
 .vs/
+
+# Test files
+test_*.py
+*_test.py
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Claude Code
+.claude/
+
+# Development documentation (keep out of repo)
+COMPRESS_ARCHIVE_FEASIBILITY_REPORT.md
+TROUBLESHOOTING.md
+USAGE_GUIDE.md
