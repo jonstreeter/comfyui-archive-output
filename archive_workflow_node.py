@@ -58,6 +58,7 @@ class ArchiveOutputWorkflowNode:
                     "default": ".py,.js,.bat,.sh,.json,.yaml,.yml",
                     "multiline": False
                 }),
+                "skip_folders": ("STRING", {"default": "database"}),
             }
         }
 

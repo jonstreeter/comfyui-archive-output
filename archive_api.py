@@ -142,6 +142,10 @@ class ArchiveService:
                 files[:] = []
                 continue
 
+            # Modify dirs in-place to skip specific folders and those starting with _
+            # This prevents os.walk from entering these directories
+            dirs[:] = [d for d in dirs if d not in ["database"] and not d.startswith("_")]
+
             for file_name in files:
                 file_path = os.path.join(root, file_name)
 
