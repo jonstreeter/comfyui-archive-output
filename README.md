@@ -10,6 +10,7 @@ A comprehensive ComfyUI custom node for organizing and optimizing your generated
 - **Date-based organization**: Files are organized by their modification date (YYYY-MM-DD)
 - **Structure preservation**: Maintains original subdirectory structure within archives
 - **Flexible filtering**: Skip hidden files and specific file extensions
+- **Folder exclusions**: Automatically skips `database` folders and system folders (starting with `_`)
 - **Automatic cleanup**: Removes empty directories after archiving
 - **Persistent Settings**: Your preferences are saved and remembered
 - **Backward Compatible**: Also includes a workflow node for automation
@@ -75,6 +76,7 @@ Without this extension, compressed images will still be viewable but won't resto
    - **Archive Folder Name**: Name of the archive folder (default: "Archive")
    - **Skip Hidden Files**: Skip files starting with `.` (default: enabled)
    - **Skip File Extensions**: Comma-separated list of file extensions to skip (default: `.py,.js,.bat,.sh,.json,.yaml,.yml`)
+   - **Skip Folders**: Comma-separated list of folder names to skip (default: `database`). Folders starting with `_` are always skipped.
 
 4. **Execute Archive**:
    - In the "Archive Output" > "Actions" section, click the "📦 Archive Now" button
@@ -178,6 +180,7 @@ For automation, a workflow node is also available:
 - `archive_folder_name`: String (default: "Archive") - Name of the archive folder
 - `skip_hidden_files`: Boolean (default: True) - Skip files starting with `.`
 - `skip_extensions`: String - Comma-separated list of file extensions to skip
+- `skip_folders`: String (default: "database") - Comma-separated list of folder names to skip (`_*` folders are always skipped)
 
 **Node Outputs:**
 - `status`: String - Summary of the archive operation
@@ -195,6 +198,15 @@ You can customize which file types to skip during archiving. By default, these e
 - `.yaml`, `.yml` - YAML files
 
 To modify, edit the `skip_extensions` parameter with a comma-separated list.
+
+### Skip Folders
+
+The archiver automatically skips:
+1. The **Archive** folder itself
+2. Any folder named `database` (configurable)
+3. Any folder starting with `_` (e.g., `_preview`, `_system`)
+
+You can customize specific folder names to exclude using the `skip_folders` parameter.
 
 ### Archive Folder Location
 
